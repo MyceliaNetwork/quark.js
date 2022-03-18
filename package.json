@@ -1,7 +1,8 @@
 {
-  "name": "@departure/quark.js",
+  "name": "@departurelabs/quark.js",
   "version": "0.0.1",
   "description": "Quark integration script to make payments a breeze",
+  "private": false,
   "main": "index.js",
   "scripts": {
     "build": "rollup --config rollup.config.js",
