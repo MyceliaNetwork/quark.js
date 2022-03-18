@@ -1,0 +1,26 @@
+{
+  "name": "@departure/quark.js",
+  "version": "0.0.1",
+  "description": "Quark integration script to make payments a breeze",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup --config rollup.config.js",
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DepartureLabsIC/quark.js.git"
+  },
+  "author": "Departure Labs",
+  "bugs": {
+    "url": "https://github.com/DepartureLabsIC/quark.js/issues"
+  },
+  "homepage": "https://github.com/DepartureLabsIC/quark.js#readme",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "prettier": "^2.6.0",
+    "rollup": "^2.70.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "vitest": "^0.7.4"
+  }
+}
