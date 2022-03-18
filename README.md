@@ -38,3 +38,10 @@ const basket = [
 ]
 checkout(basket)
 ```
+
+## Publishing
+
+```sh
+npm run build
+npm publish
+```
