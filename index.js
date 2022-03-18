@@ -75,10 +75,9 @@ const init = config => {
     "message",
     function (event) {
       if (event.origin !== config.domain) return // DANGER ZONE
-      const eventData = JSON.parse(event.data)
-      if (!["checkoutLoaded", "checkoutComplete"].includes(eventData.type))
+      if (!["checkoutLoaded", "checkoutComplete"].includes(event.data.type))
         return
-      if (eventData.type === "checkoutLoaded") {
+      if (event.data.type === "checkoutLoaded") {
         const message = JSON.stringify(
           {
             type: "basketUpdate",
@@ -92,7 +91,7 @@ const init = config => {
         )
         quarkWindow.postMessage(message, config.domain)
       } else if ("checkoutComplete") {
-        config.callback(eventData)
+        config.callback(event.data)
       }
     },
     false,
