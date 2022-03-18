@@ -156,9 +156,9 @@ const init = config => {
    * the transaction.
    *
    * @typedef {Object} BasketItem
-   * @property {string} name the metadata item name. e.g. "Spoon"
+   * @property {string} name the basket item name. e.g. "Spoon"
    * @property {string} [description] An optional item description
-   * @property {number} value the value of the metadata item as an
+   * @property {number} value the value of the basket item as an
    * e8s value. e.g. 10000000 for 1 ICP
    * @property {string} valueType The currency used for the checkout.
    * e.g. "ICP"
@@ -166,9 +166,9 @@ const init = config => {
 
   /**
    * validateBasket -Utility Function to ensure a correct
-   * implementation of quark.js' metadata.
+   * implementation of quark.js' basket.
    *
-   * @param {Array.<BasketItem>} metadata Array with BasketItems
+   * @param {Array.<BasketItem>} basket Array with BasketItems
    * @returns {boolean} the validation result
    */
   function validateBasket(basket = []) {
@@ -215,7 +215,7 @@ const init = config => {
    */
   function checkout(data) {
     if (!validateBasket(data)) return
-    metadata = data
+    basket = data
     const queryString = JSON.stringify({
       origin: window.origin,
       authProvider: config.authProvider,

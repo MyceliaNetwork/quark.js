@@ -1,8 +1,9 @@
 {
   "name": "@departurelabs/quark.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Quark integration script to make payments a breeze",
-  "main": "dist/index",
+  "main": "dist/umd/quark.js",
+  "module": "dist/esm/quark.js",
   "scripts": {
     "build": "rollup --config rollup.config.js",
     "test": "vitest"
