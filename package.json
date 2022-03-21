@@ -1,6 +1,6 @@
 {
   "name": "@departurelabs/quark.js",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Quark integration script to make payments a breeze",
   "main": "dist/umd/quark.js",
   "module": "dist/esm/quark.js",
