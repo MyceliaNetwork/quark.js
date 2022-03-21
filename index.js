@@ -48,8 +48,8 @@ const ALLOWED_VALUE_TYPES = ["ICP"]
  * - `checkoutLoaded`: this message will be dispatched once the Quark
  * checkout page was opened in another tab. Upon receiving this
  * message we will send all the necessary data to the opened tab,
- * such as basket, payee, etc. using a window.postMessage
- * MessageEvent with the type `basketUpdate`.
+ * such as `basket`, `payee`, etc. using a window.postMessage
+ * MessageEvent with the type "basketUpdate".
  * - `checkoutComplete`: this is sent to our listener when the user
  * has confirmed the checkout on the Quark website. Upon receiving
  * a message with this type, we will call the `callback` Function
@@ -78,19 +78,18 @@ const init = config => {
       if (!["checkoutLoaded", "checkoutComplete"].includes(event.data.type))
         return
       if (event.data.type === "checkoutLoaded") {
-        const message = JSON.stringify(
-          {
+        const message = JSON.parse(
+          JSON.stringify({
             type: "basketUpdate",
             basket,
             origin,
             notify: config.notify,
             payee: config.payee,
             authProvider: config.authProvider,
-          },
-          (_key, value) => (typeof value === "bigint" ? Number(value) : value),
+          }),
         )
         quarkWindow.postMessage(message, config.domain)
-      } else if ("checkoutComplete") {
+      } else if (event.data.type === "checkoutComplete") {
         config.callback(event.data)
       }
     },
