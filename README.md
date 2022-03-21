@@ -18,7 +18,7 @@ const { checkout } = init({
     principalId: "jsl3u-sqaaa-aaaaa-danil-cai",
     methodName: "callback",
   },
-  payee: "rno2w-sqaaa-aaaaa-aaacq-cai",
+  integrator: "rno2w-sqaaa-aaaaa-aaacq-cai",
   callback: event => {
     if (event.type === "checkoutComplete") {
       if (event.data.result === "Accepted") {
@@ -50,6 +50,6 @@ support them in the checkout. You'll need to cast them to Numbers in stead.
 > npm run build
 > git add .
 > git commit -m "changes"
-> npm version
+> npm version <patch/minor/major>
 > npm publish
 ```

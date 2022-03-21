@@ -8,29 +8,29 @@ const ALLOWED_VALUE_TYPES = ["ICP"]
  *
  * Used to produce a Candid func that is called when the checkout
  * has been confirmed on the Quark website. From there on out it is
- * up to the merchant to process all the bought items by the end-user.
+ * up to the integrator to process all the bought items by the end-user.
  *
  * More info:
  * https://smartcontracts.org/docs/candid-guide/candid-types.html#type-func
  *
  * @typedef {Object} NotifyObject
- * @property {string} principalId the ID of the merchant's canister
+ * @property {string} principalId the ID of the integrator's canister
  * @property {string} methodName the name of the exposed method
  */
 
 /**
  * InitConfig
  *
- * A valid config to initialize Quark on the merchant's website.
+ * A valid config to initialize Quark on the integrator's website.
  * @typedef {Object} InitConfig
  * @property {string} authProvider - Used to ensure the correct
  * auth mechanism when the user is redirected to the Quark website
  * to proceed the checkout.
- * @property {string} payee - A canister ID where the funds will
+ * @property {string} integrator - A canister ID where the funds will
  * be sent to upon a successful checkout
  * @property {string} domain - The domain of the Quark website
  * @property {NotifyObject} - An exposed canister method that
- * belongs to the merchant that is called when Quark successfully
+ * belongs to the integrator that is called when Quark successfully
  * confirms the checkout.
  */
 
@@ -48,13 +48,13 @@ const ALLOWED_VALUE_TYPES = ["ICP"]
  * - `checkoutLoaded`: this message will be dispatched once the Quark
  * checkout page was opened in another tab. Upon receiving this
  * message we will send all the necessary data to the opened tab,
- * such as `basket`, `payee`, etc. using a window.postMessage
+ * such as `basket`, `integrator`, etc. using a window.postMessage
  * MessageEvent with the type "basketUpdate".
  * - `checkoutComplete`: this is sent to our listener when the user
  * has confirmed the checkout on the Quark website. Upon receiving
  * a message with this type, we will call the `callback` Function
  * that the user passed inside the init() config and it's up to
- * the merchant to take it from there.
+ * the integrator to take it from there.
  *
  * Also, there is one type of outgoing message going from the
  * quark.js-side to the Quark-side:
@@ -84,7 +84,7 @@ const init = config => {
             basket,
             origin,
             notify: config.notify,
-            payee: config.payee,
+            integrator: config.integrator,
             authProvider: config.authProvider,
           }),
         )
@@ -115,13 +115,14 @@ const init = config => {
    * @returns {void}
    */
   function validateConfig(config) {
-    if (!config.payee) throw new Error("The field `payee` is required")
+    if (!config.integrator)
+      throw new Error("The field `integrator` is required")
     if (!config.domain) throw new Error("The field `domain` is required")
     if (!config.notify) throw new Error("The field `notify` is required")
     if (!config.authProvider)
       throw new Error("The field `authProvider` is required")
-    if (typeof config.payee !== "string")
-      throw new Error("The field `payee` must be of type 'string'")
+    if (typeof config.integrator !== "string")
+      throw new Error("The field `integrator` must be of type 'string'")
     if (typeof config.domain !== "string")
       throw new Error("The field `domain` must be of type 'string'")
     if (typeof config.authProvider !== "string")
@@ -204,7 +205,7 @@ const init = config => {
   /**
    * checkout - Open Quark website to confirm checkout
    *
-   * After quark.js is properly configured, the merchant
+   * After quark.js is properly configured, the integrator
    * can call this Function to open a new browser window to
    * the Quark website to let the user confirm the transfer.
    *
