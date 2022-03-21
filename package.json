@@ -4,6 +4,7 @@
   "description": "Quark integration script to make payments a breeze",
   "main": "dist/umd/quark.js",
   "module": "dist/esm/quark.js",
+  "private": false,
   "scripts": {
     "build": "rollup --config rollup.config.js",
     "test": "vitest"
