@@ -4,7 +4,9 @@ Quark integration script
 
 ## Installation
 
-TODO
+```sh
+npm i -S @departurelabs/quark.js
+```
 
 ## Usage
 
@@ -33,11 +35,14 @@ const basket = [
     name: "Spoon",
     description: "Use this for your soup",
     value: 10000000,
-    valueType: "ICP",
+    token: "ICP",
   },
 ]
 checkout(basket)
 ```
+
+_PLEASE NOTE_: BigInts cannot be serialized client-side and thus we do not
+support them in the checkout. You'll need to cast them to Numbers in stead.
 
 ## Publishing
 

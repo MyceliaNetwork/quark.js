@@ -160,7 +160,7 @@ const init = config => {
    * @property {string} [description] An optional item description
    * @property {number} value the value of the basket item as an
    * e8s value. e.g. 10000000 for 1 ICP
-   * @property {string} valueType The currency used for the checkout.
+   * @property {string} token The currency used for the checkout.
    * e.g. "ICP"
    */
 
@@ -181,17 +181,16 @@ const init = config => {
     const hasValidMetadata = basket.every(item => {
       if (!item.name) throw new Error("The field `name` is required")
       if (!item.value) throw new Error("The field `value` is required")
-      if (!item.valueType) throw new Error("The field `valueType` is required")
+      if (!item.token) throw new Error("The field `token` is required")
       if (typeof item.name !== "string")
         throw new Error("The field `name` must be of type 'string'")
       if (typeof item.value !== "number")
         throw new Error("The field `value` must be of type 'number'")
-      if (typeof item.valueType !== "string")
-        throw new Error("The field `valueType` must be of type 'string'")
+      if (typeof item.token !== "string")
+        throw new Error("The field `token` must be of type 'string'")
       if (!ALLOWED_VALUE_TYPES.includes("ICP"))
         throw new Error(
-          "The field `valueType` must be one of: " +
-            ALLOWED_VALUE_TYPES.join(", "),
+          "The field `token` must be one of: " + ALLOWED_VALUE_TYPES.join(", "),
         )
       if (item.description && typeof item.description !== "string") {
         throw new Error("The field `description` must be of type 'string'")
