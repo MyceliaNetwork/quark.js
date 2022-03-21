@@ -41,7 +41,7 @@ const basket = [
 checkout(basket)
 ```
 
-_PLEASE NOTE_: BigInts cannot be serialized client-side and thus we do not
+**PLEASE NOTE**: BigInts cannot be serialized client-side and thus we do not
 support them in the checkout. You'll need to cast them to Numbers in stead.
 
 ## Publishing

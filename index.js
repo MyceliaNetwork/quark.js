@@ -178,9 +178,10 @@ const init = config => {
     if (!basket.length) {
       throw new Error("You should provide at least one item to check-out")
     }
-    const hasValidMetadata = basket.every(item => {
+    const hasValidBasket = basket.every(item => {
       if (!item.name) throw new Error("The field `name` is required")
-      if (!item.value) throw new Error("The field `value` is required")
+      if (!item.value && item.value !== 0)
+        throw new Error("The field `value` is required")
       if (!item.token) throw new Error("The field `token` is required")
       if (typeof item.name !== "string")
         throw new Error("The field `name` must be of type 'string'")
@@ -188,7 +189,7 @@ const init = config => {
         throw new Error("The field `value` must be of type 'number'")
       if (typeof item.token !== "string")
         throw new Error("The field `token` must be of type 'string'")
-      if (!ALLOWED_VALUE_TYPES.includes("ICP"))
+      if (!ALLOWED_VALUE_TYPES.includes(item.token))
         throw new Error(
           "The field `token` must be one of: " + ALLOWED_VALUE_TYPES.join(", "),
         )
@@ -198,8 +199,8 @@ const init = config => {
       return true
     })
     const total = getTotal(basket)
-    const hasValidAmount = total >= 0
-    return hasValidMetadata && hasValidAmount
+    const hasValidAmount = total > 0
+    return hasValidBasket && hasValidAmount
   }
 
   /**
