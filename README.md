@@ -47,6 +47,8 @@ support them in the checkout. You'll need to cast them to Numbers in stead.
 ## Publishing
 
 ```sh
-npm run build
-npm publish
+> lsnpm run build
+> lsgit add .
+> lsgit commit -m "your message"
+> lsnpm publish
 ```
