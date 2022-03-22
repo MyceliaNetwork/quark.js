@@ -153,7 +153,7 @@ Quark-side:
 We currently only support ICP. More tokens (such as cycles) will follow soon!
 
 Our target token ICP requires its values be set in e8s. One e8 is the smallest
-partition of an ICP token (1\*10^-8). For example, 123.15000001 ICP is
+partition of an ICP token (1/10^8). For example, 123.15000001 ICP is
 12_315_000_001 e8s. To convert whole value ICP to e8s simply multiply the ICP
 value by 1e8
 
