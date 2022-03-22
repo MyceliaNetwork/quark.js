@@ -96,7 +96,7 @@ quark.js upon checkout. Will be of shape:
 "Trust, but verify!" If your best course of action when handling the callback
 data.
 
-Once you have instantiated the object we can begin creating an basket with a
+Once you have instantiated the object we can begin creating a basket with a
 couple of transaction items.
 
 **PLEASE NOTE**: BigInts cannot be serialized client-side and thus we do not
