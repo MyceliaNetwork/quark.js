@@ -168,6 +168,7 @@ libraries such as:
 
 - [currency.js](https://currency.js.org/)
 - [dinero.js](https://dinerojs.com/)
+- [numeral.js](http://numeraljs.com/)
 
 ## Publishing
 
