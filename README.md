@@ -100,7 +100,7 @@ Once you have instantiated the object we can begin creating a basket with a
 couple of transaction items.
 
 **PLEASE NOTE**: BigInts cannot be serialized client-side and thus we do not
-support them in the checkout. You'll need to cast them to Numbers in stead.
+support them in the checkout. You'll need to cast them to Numbers instead.
 
 ## Basket structure
 
