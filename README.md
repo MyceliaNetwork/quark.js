@@ -81,16 +81,11 @@ a Quark user principal unless you are absolutely sure about what you are doing.
 quark.js upon checkout. Will be of shape:
 
 ```json
-{
-  "type": "checkoutUpdate",
-  "basket": "
-}
+{ "type": "checkoutComplete", "data": { "result": "Accepted" } }
 ```
 
 ```json
-{
-  "type": "checkoutUpdate"
-}
+{ "type": "checkoutComplete", "data": { "result": "Rejected" } }
 ```
 
 "Trust, but verify!" is your best course of action when handling the callback
