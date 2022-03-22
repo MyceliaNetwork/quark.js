@@ -121,7 +121,7 @@ support them in the checkout. You'll need to cast them to Numbers in stead.
 
 ## Cross-tab communication
 
-When called the configuration passed as a parameter is first validated. When
+When called, the configuration passed as a parameter is first validated. When
 validated, we're attaching an eventListener to the window scope. The
 eventListener will execute a handler upon receiving an incoming message. When
 this message comes from the Quark website it will execute code to ensure
