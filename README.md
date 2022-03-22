@@ -75,7 +75,7 @@ canister.
 
 **Warning!** This principal must be able to invoke calls against Quark in order
 to withdraw funds. Please use only use a canister, a dfx principal identity, or
-a Quark user principal unless you're absolutely sure about what you are doing.
+a Quark user principal unless you are absolutely sure about what you are doing.
 
 `callback` - A javascript method implemented by the integrator to be invoked by
 quark.js upon checkout. Will be of shape:
@@ -93,14 +93,11 @@ quark.js upon checkout. Will be of shape:
 }
 ```
 
-"Trust, but verify!" If your best course of action when handling the callback
+"Trust, but verify!" is your best course of action when handling the callback
 data.
 
-Once you have instantiated the object we can begin creating a basket with a
-couple of transaction items.
-
-**PLEASE NOTE**: BigInts cannot be serialized client-side and thus we do not
-support them in the checkout. You'll need to cast them to Numbers instead.
+Once you have instantiated the checkout Function we can begin creating a basket
+with a couple of transaction items.
 
 ## Basket structure
 
@@ -116,13 +113,10 @@ support them in the checkout. You'll need to cast them to Numbers instead.
   - `description` - optional description of the checked out product. e.g. “Used
     to eat soup”
 
-**PLEASE NOTE**: BigInts cannot be serialized client-side and thus we do not
-support them in the checkout. You'll need to cast them to Numbers in stead.
-
 ## Cross-tab communication
 
 When called, the configuration passed as a parameter is first validated. When
-validated, we're attaching an eventListener to the window scope. The
+validated, we will attach an eventListener to the window scope. The
 eventListener will execute a handler upon receiving an incoming message. When
 this message comes from the Quark website it will execute code to ensure
 communication between quark.js and the Quark website.
@@ -148,12 +142,15 @@ Quark-side:
   contents of the checkout and calculate the total sum of the transaction to
   display this to the user to confirm.
 
+**PLEASE NOTE**: BigInts cannot be serialized client-side and thus we do not
+support them in the checkout. You will need to cast them to Numbers instead.
+
 ## Token support
 
 We currently only support ICP. More tokens (such as cycles) will follow soon!
 
 Our target token ICP requires its values be set in e8s. One e8 is the smallest
-partition of an ICP token (1/10^8). For example, 123.15000001 ICP is
+partition of an ICP token (1/10^8 or 10^-8). For example, 123.15000001 ICP is
 12_315_000_001 e8s. To convert whole value ICP to e8s simply multiply the ICP
 value by 1e8
 
@@ -162,7 +159,7 @@ const icp = 123.3341 // make sure there are more than 8 digits of precision!!
 const e8s = icp * 1e8
 ```
 
-Quick tip: As you're handling other people's capital and its common to run into
+Quick tip: As you are handling other people's capital and its common to run into
 floating point errors when performing basic arithmetic, we recommend using
 libraries such as:
 
