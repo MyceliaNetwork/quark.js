@@ -22,9 +22,9 @@ npm i -S @departurelabs/quark.js
 Example integration:
 
 ```js
-import { init } from "@departurelabs/quark.js"
+import initializeQuark from "@departurelabs/quark.js"
 
-const { checkout } = init({
+const { checkout } = initializeQuark({
   authProvider: "ii",
   domain: "https://ebgyc-nqaaa-aaaaf-qad6q-cai.ic0.app",
   notify: {
