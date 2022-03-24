@@ -1,5 +1,5 @@
-import { terser } from "rollup-plugin-terser";
-import resolve from "@rollup/plugin-node-resolve";
+import { terser } from "rollup-plugin-terser"
+import resolve from "@rollup/plugin-node-resolve"
 
 export default {
   input: "index.js",
@@ -16,17 +16,17 @@ export default {
   external: [],
   output: [
     {
-      file: "dist/esm/quark.js",
-      format: "esm",
-      exports: "named",
-      sourcemap: true,
-    },
-    {
-      file: "dist/umd/quark.js",
       name: "quark",
+      file: "dist/quark.umd.min.js",
       format: "umd",
       exports: "named",
       sourcemap: true,
     },
+    {
+      file: "dist/quark.esm.min.js",
+      format: "esm",
+      exports: "named",
+      sourcemap: true,
+    },
   ],
-};
+}

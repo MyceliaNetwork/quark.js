@@ -35,7 +35,7 @@ const ALLOWED_VALUE_TYPES = ["ICP"]
  */
 
 /**
- * init - Initialize quark.js
+ * initializeQuark - Initialize quark.js
  *
  * When called the configuration passed as a parameter is first
  * validated. When validated, we're attaching an eventListener
@@ -69,7 +69,7 @@ const ALLOWED_VALUE_TYPES = ["ICP"]
  * @param {InitConfig} config
  * @returns {void}
  */
-const init = config => {
+function initializeQuark(config) {
   validateConfig(config)
   window.addEventListener(
     "message",
@@ -231,4 +231,4 @@ const init = config => {
   }
 }
 
-export { init }
+export default initializeQuark
