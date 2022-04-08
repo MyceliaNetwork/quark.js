@@ -7,7 +7,7 @@ Internet Computer.
 
 ## Websites
 
-- [Quark](https://ebgyc-nqaaa-aaaaf-qad6q-cai.ic0.app/)
+- [Quark](https://pwwjo-6qaaa-aaaam-aadka-cai.ic0.app/)
 - [npm](https://www.npmjs.com/package/@departurelabs/quark.js)
 - [GitHub](https://github.com/DepartureLabsIC/quark.js)
 
