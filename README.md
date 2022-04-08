@@ -26,7 +26,7 @@ import initializeQuark from "@departurelabs/quark.js"
 
 const { checkout } = initializeQuark({
   authProvider: "ii",
-  domain: "https://ebgyc-nqaaa-aaaaf-qad6q-cai.ic0.app",
+  domain: "https://pwwjo-6qaaa-aaaam-aadka-cai.ic0.app",
   notify: {
     principalId: "dlftw-sqaaa-aaaaa-danil-cai",
     methodName: "callback",
