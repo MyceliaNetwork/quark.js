@@ -155,8 +155,8 @@ const e8s = icp * 1e8
 ```
 
 Quick tip: As you are handling other people's capital and its common to run into
-floating point errors when performing basic arithmetic, we recommend using
-libraries such as:
+floating point errors when performing basic arithmetic. To avoid this, we
+recommend using libraries such as:
 
 - [currency.js](https://currency.js.org/)
 - [dinero.js](https://dinerojs.com/)

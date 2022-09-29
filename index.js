@@ -221,7 +221,7 @@ function initializeQuark(config) {
       authProvider: config.authProvider,
     })
     quarkWindow = window.open(
-      `${config.domain}/checkout?checkoutData=${btoa(queryString)}`,
+      `${config.domain}/checkout?data=${btoa(queryString)}`,
       "_blank",
     )
   }
