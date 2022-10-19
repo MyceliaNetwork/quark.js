@@ -31,7 +31,7 @@ const { checkout } = initializeQuark({
     principalId: "dlftw-sqaaa-aaaaa-danil-cai",
     methodName: "callback",
   },
-  integrator: "rno2w-sqaaa-aaaaa-aaacq-cai",
+  integrator: "company@testnet.quark",
   callback: event => {
     if (event.type === "checkoutComplete") {
       if (event.data.result === "Accepted") {
@@ -65,20 +65,23 @@ checking out but not yet authenticated.
 we expect larger services might want to self-host their own checkout pages.
 
 `notify` - An object containing the Principal ID as a string and the name of the
-canister method as a string. We call this public method when a user completes a
+canister method as a string.
+
+`notify.principalId` - The Principal ID of the canister that will receive the
+callback.
+
+`notify.methodName` - We call this public method when a user completes a
 transaction. The Canister will be required to accept or deny each incoming
 transaction.
 
-`integrator` - The Principal ID of who Quark should actually send the payment
-to. It is generally recommended to keep this the same as your above notify
-canister.
+`integrator` - The Quark Account ID of the recipient of the payment.
 
 **Warning!** This principal must be able to invoke calls against Quark in order
 to withdraw funds. Please use only use a canister, a dfx principal identity, or
 a Quark user principal unless you are absolutely sure about what you are doing.
 
 `callback` - A javascript method implemented by the integrator to be invoked by
-quark.js upon checkout. Will be of shape:
+quark.js upon checkout. Examples:
 
 ```json
 { "type": "checkoutComplete", "data": { "result": "Accepted" } }
