@@ -5,11 +5,23 @@ Quark integration script.
 Integrate this script in your IC application to support payments on Dfinity's
 Internet Computer.
 
+- [quark.js](#quarkjs)
+  - [Websites](#websites)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Configuration properties](#configuration-properties)
+  - [Basket structure](#basket-structure)
+  - [Cross-tab communication](#cross-tab-communication)
+  - [Token support](#token-support)
+  - [Authentication providers](#authentication-providers)
+  - [Publishing](#publishing)
+
 ## Websites
 
 - [Quark](https://pwwjo-6qaaa-aaaam-aadka-cai.ic0.app/)
 - [npm](https://www.npmjs.com/package/@departurelabs/quark.js)
-- [GitHub](https://github.com/DepartureLabsIC/quark.js)
+- [GitHub quark.js](https://github.com/DepartureLabsIC/quark.js)
+- [GitHub rs_quark](https://github.com/DepartureLabsIC/rs_quark)
 
 ## Installation
 
@@ -59,7 +71,9 @@ checkout(basket)
 
 `authProvider` - The provider used to authenticate the user. This value is used
 to redirect the user quickly to the correct authentication page when they are
-checking out but not yet authenticated.
+checking out but not yet authenticated. See
+[Authentication providers](#authentication-providers) for a list of the
+providers we currently support.
 
 `domain` - The domain quark.js will send a user to upon checkout. In the future,
 we expect larger services might want to self-host their own checkout pages.
@@ -81,7 +95,9 @@ to withdraw funds. Please use only use a canister, a dfx principal identity, or
 a Quark user principal unless you are absolutely sure about what you are doing.
 
 `callback` - A javascript method implemented by the integrator to be invoked by
-quark.js upon checkout. Examples:
+quark.js upon a checkout Event.
+
+Example events:
 
 ```json
 { "type": "checkoutComplete", "data": { "result": "Accepted" } }
@@ -94,8 +110,8 @@ quark.js upon checkout. Examples:
 "Trust, but verify!" is your best course of action when handling the callback
 data.
 
-Once you have instantiated the checkout Function we can begin creating a basket
-with a couple of transaction items.
+Once you have instantiated the `checkout` Function we can begin creating a
+basket with a couple of transaction items.
 
 ## Basket structure
 
@@ -113,10 +129,10 @@ with a couple of transaction items.
 
 ## Cross-tab communication
 
-When called, the configuration passed as a parameter is first validated. When
-validated, we will attach an eventListener to the window scope. The
-eventListener will execute a handler upon receiving an incoming message. When
-this message comes from the Quark website it will execute code to ensure
+When calling `initializeQuark`, the configuration passed as a parameter is first
+validated. When validated, we will attach an eventListener to the window scope.
+The eventListener will execute a handler upon receiving an incoming message.
+When this message comes from the Quark website it will execute code to ensure
 communication between quark.js and the Quark website.
 
 There are two types of incoming messages on the quark.js-side:
@@ -145,16 +161,17 @@ support them in the checkout. You will need to cast them to Numbers instead.
 
 ## Token support
 
-We currently only support ICP. More tokens (such as cycles) will follow soon!
+We currently only support TEST-tokens on our testnet. More tokens (such as ICP
+and cycles) will follow soon!
 
-Our target token ICP requires its values be set in e8s. One e8 is the smallest
-partition of an ICP token (1/10^8 or 10^-8). For example, 123.15000001 ICP is
-12_315_000_001 e8s. To convert whole value ICP to e8s simply multiply the ICP
+Our target token TEST requires its values be set in e8s. One e8 is the smallest
+partition of an TEST token (1/10^8 or 10^-8). For example, 123.15000001 TEST is
+12_315_000_001 e8s. To convert whole value TEST to e8s simply multiply the TEST
 value by 1e8
 
 ```js
-const icp = 123.3341 // make sure there are more than 8 digits of precision!!
-const e8s = icp * 1e8
+const tokens = 123.3341 // make sure there are more than 8 digits of precision!!
+const e8s = tokens * 1e8
 ```
 
 Quick tip: As you are handling other people's capital and its common to run into
@@ -164,6 +181,17 @@ recommend using libraries such as:
 - [currency.js](https://currency.js.org/)
 - [dinero.js](https://dinerojs.com/)
 - [numeral.js](http://numeraljs.com/)
+
+## Authentication providers
+
+Currently we support the following authentication providers by passing the
+following values to the `authProvider` property when calling `initializeQuark`:
+
+| Provider                                       | Value  |
+| ---------------------------------------------- | ------ |
+| [Internet Identity](https://identity.ic0.app/) | `ii`   |
+| [NFID](https://nfid.one/)                      | `nfid` |
+| [Plug](https://plugwallet.ooo/)                | `plug` |
 
 ## Publishing
 
