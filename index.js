@@ -1,7 +1,7 @@
 let quarkWindow
 let basket = []
 const ALLOWED_AUTH_PROVIDERS = ["ii"]
-const ALLOWED_VALUE_TYPES = ["ICP"]
+const ALLOWED_VALUE_TYPES = ["test"]
 
 /**
  * NotifyObject
