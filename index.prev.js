@@ -1,7 +1,7 @@
 let quarkWindow
 let basket = []
 const ALLOWED_AUTH_PROVIDERS = ["ii"]
-const ALLOWED_VALUE_TYPES = ["ICP"]
+const ALLOWED_VALUE_TYPES = ["test"]
 
 /**
  * NotifyObject
@@ -159,9 +159,9 @@ function initializeQuark(config) {
    * @property {string} name the basket item name. e.g. "Spoon"
    * @property {string} [description] An optional item description
    * @property {number} value the value of the basket item as an
-   * e8s value. e.g. 10000000 for 1 ICP
+   * e8s value. e.g. 10000000 for 1 test
    * @property {string} token The currency used for the checkout.
-   * e.g. "ICP"
+   * e.g. "test"
    */
 
   /**
