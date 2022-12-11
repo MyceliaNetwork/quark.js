@@ -171,13 +171,21 @@ const Window = z.object({
   open: z.function(),
 })
 
-const Checkout = z.function().args(Basket).returns(Basket)
+const Checkout = z.function().args(Basket).returns(z.boolean())
 
+const Closure = z.object({
+  window: Window,
+  basket: Basket,
+})
 /**
  * CreateCheckout
  */
 const CreateCheckoutArgs = z
-  .object({ provider: Provider, domain: Domain, windowObject: Window })
+  .object({
+    provider: Provider,
+    domain: Domain,
+    closure: Closure,
+  })
   .required()
   .strict()
 const CreateCheckout = z.function().args(CreateCheckoutArgs).returns(Checkout)

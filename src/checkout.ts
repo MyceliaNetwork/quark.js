@@ -10,22 +10,23 @@
 import { type CreateCheckoutArgs, type Checkout, type Basket } from "./schemas"
 
 function createCheckout({
-  provider,
   domain,
-  windowObject,
+  provider,
+  closure,
 }: CreateCheckoutArgs): Checkout {
-  return function checkout(basket: Basket): Basket {
+  return function checkout(b: Basket): boolean {
     // TODO: validate in outside module to separate validation from logic
     // if (!validateBasket(data)) return
+    closure.basket = b
     const queryString = JSON.stringify({
       origin: window.origin,
-      provider: provider,
+      provider,
     })
-    windowObject = window.open(
+    closure.window = window.open(
       `${domain}/checkout?data=${btoa(queryString)}`,
       "_blank",
     )
-    return basket
+    return true
   }
 }
 
