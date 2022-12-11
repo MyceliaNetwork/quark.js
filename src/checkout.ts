@@ -7,33 +7,25 @@
  * the Quark website to let the user confirm the transfer.
  */
 
-import { z } from "zod"
-import {
-  type CreateCheckoutArgs,
-  type CheckoutReturn,
-  type Checkout,
-  type Basket,
-} from "./schemas"
+import { type CreateCheckoutArgs, type Checkout, type Basket } from "./schemas"
 
-function createCheckout<CreateCheckout>({
+function createCheckout({
   provider,
   domain,
+  windowObject,
 }: CreateCheckoutArgs): Checkout {
-  return function checkout(basket: Basket): CheckoutReturn {
+  return function checkout(basket: Basket): Basket {
     // TODO: validate in outside module to separate validation from logic
     // if (!validateBasket(data)) return
     const queryString = JSON.stringify({
       origin: window.origin,
       provider: provider,
     })
-    const quarkWindow = window.open(
+    windowObject = window.open(
       `${domain}/checkout?data=${btoa(queryString)}`,
       "_blank",
     )
-    return {
-      window: quarkWindow,
-      basket,
-    }
+    return basket
   }
 }
 

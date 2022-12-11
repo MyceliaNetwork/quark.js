@@ -1,11 +1,15 @@
 import { terser } from "rollup-plugin-terser"
 import resolve from "@rollup/plugin-node-resolve"
+import typescript from "@rollup/plugin-typescript"
 
 export default {
-  input: "index.js",
+  input: "index.ts",
   plugins: [
-    terser(),
+    typescript({ module: "ESNext" }),
+    // TODO: uncomment
+    // terser(),
     resolve({
+      // TODO: review this
       // pass custom options to the resolve plugin
       customResolveOptions: {
         moduleDirectories: ["node_modules"],

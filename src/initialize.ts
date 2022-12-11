@@ -1,10 +1,10 @@
 import { createCheckout } from "./checkout"
-import { type Config } from "./schemas"
+import { type Config, type Checkout } from "./schemas"
 
-let quarkWindow
 let basket = []
 
-export function initialize(config: Config) {
+export function initialize(config: Config): Checkout {
+  const windowObject = window
   window.addEventListener(
     "message",
     function (event) {
@@ -22,7 +22,7 @@ export function initialize(config: Config) {
             provider: config.provider,
           }),
         )
-        quarkWindow.postMessage(message, config.domain)
+        windowObject.postMessage(message, config.domain)
       } else if (event.data.type === "checkoutComplete") {
         config.callback(event.data)
       }
@@ -31,5 +31,5 @@ export function initialize(config: Config) {
   )
 
   const { provider, domain } = config
-  return createCheckout({ provider, domain })
+  return createCheckout({ provider, domain, windowObject })
 }

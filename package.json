@@ -23,6 +23,7 @@
   "homepage": "https://github.com/DepartureLabsIC/quark.js#readme",
   "devDependencies": {
     "@rollup/plugin-node-resolve": "13.1.3",
+    "@rollup/plugin-typescript": "^10.0.1",
     "jsdom": "19.0.0",
     "prettier": "2.8.0",
     "rollup": "2.70.1",

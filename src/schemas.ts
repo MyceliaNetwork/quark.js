@@ -171,17 +171,13 @@ const Window = z.object({
   open: z.function(),
 })
 
-const CheckoutReturn = z.object({
-  basket: Basket,
-  window: Window,
-})
-const Checkout = z.function().args(Basket).returns(CheckoutReturn)
+const Checkout = z.function().args(Basket).returns(Basket)
 
 /**
  * CreateCheckout
  */
 const CreateCheckoutArgs = z
-  .object({ provider: Provider, domain: Domain })
+  .object({ provider: Provider, domain: Domain, windowObject: Window })
   .required()
   .strict()
 const CreateCheckout = z.function().args(CreateCheckoutArgs).returns(Checkout)
@@ -190,5 +186,4 @@ const CreateCheckout = z.function().args(CreateCheckoutArgs).returns(Checkout)
 export type CreateCheckout = z.infer<typeof CreateCheckout>
 
 export type CreateCheckoutArgs = z.infer<typeof CreateCheckoutArgs>
-export type CheckoutReturn = z.infer<typeof CheckoutReturn>
 export type Checkout = z.infer<typeof Checkout>
