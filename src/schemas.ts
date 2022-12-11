@@ -159,7 +159,7 @@ const BasketItem = z
  *
  */
 
-const Basket = BasketItem.array()
+export const Basket = BasketItem.array()
 
 export type Basket = z.infer<typeof Basket>
 
