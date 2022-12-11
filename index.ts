@@ -1,2 +1,2 @@
-export { checkout } from "./src/checkout.ts"
-export { validate } from "./src/validate.ts"
+export { initialize } from "./src/initialize"
+// export { validate } from "./src/validate"
