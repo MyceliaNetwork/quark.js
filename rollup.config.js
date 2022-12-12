@@ -1,35 +1,29 @@
-import { terser } from "rollup-plugin-terser"
 import resolve from "@rollup/plugin-node-resolve"
 import typescript from "@rollup/plugin-typescript"
 
 export default [
   {
-    input: "./src/initialize.ts",
+    input: "./packages/quark.checkout/index.ts",
     plugins: [
-      typescript({ module: "ESNext" }),
-      // TODO: uncomment
-      // terser(),
-      resolve({
-        // TODO: review this
-        // pass custom options to the resolve plugin
-        customResolveOptions: {
-          moduleDirectories: ["node_modules"],
-        },
+      typescript({
+        module: "ESNext",
+        tsconfig: "./packages/quark.checkout/tsconfig.pkg.json",
       }),
+      resolve(),
     ],
     // indicate which modules should be treated as external
     external: [],
     output: [
       {
-        name: "quark",
-        file: "dist/quark.umd.min.js",
+        name: "quark.checkout",
+        file: "./dist/quark.checkout.umd.js",
         format: "umd",
         exports: "named",
         sourcemap: true,
       },
       {
-        name: "quark",
-        file: "dist/quark.esm.min.js",
+        name: "quark.checkout",
+        file: "./dist/quark.checkout.esm.js",
         format: "esm",
         exports: "named",
         sourcemap: true,
@@ -38,32 +32,27 @@ export default [
   },
 
   {
-    input: "./src/validate.ts",
+    input: "./packages/quark.checkout.validate/index.ts",
     plugins: [
-      typescript({ module: "ESNext" }),
-      // TODO: uncomment
-      // terser(),
-      resolve({
-        // TODO: review this
-        // pass custom options to the resolve plugin
-        customResolveOptions: {
-          moduleDirectories: ["node_modules"],
-        },
+      typescript({
+        module: "ESNext",
+        tsconfig: "./packages/quark.checkout.validate/tsconfig.pkg.json",
       }),
+      resolve(),
     ],
     // indicate which modules should be treated as external
     external: [],
     output: [
       {
-        name: "validate",
-        file: "dist/validate.umd.min.js",
+        name: "quark.checkout.validate",
+        file: "./dist/quark.checkout.validate.umd.js",
         format: "umd",
         exports: "named",
         sourcemap: true,
       },
       {
-        name: "validate",
-        file: "dist/validate.esm.min.js",
+        name: "quark.checkout.validate",
+        file: "./dist/quark.checkout.validate.esm.js",
         format: "esm",
         exports: "named",
         sourcemap: true,

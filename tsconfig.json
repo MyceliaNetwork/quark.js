@@ -1,8 +1,7 @@
 {
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "es2015",
-    "moduleResolution": "node"
+    "baseUrl": "./"
   },
-  "include": ["./src/**/*"]
+  "include": ["./packages/*/**.ts", "./src/*.ts"]
 }

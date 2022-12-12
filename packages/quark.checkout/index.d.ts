@@ -30,41 +30,5 @@
  *
  * checkout(basket);
  **/
-
-import { createCheckout } from "./checkout"
-import { type Config, type Checkout } from "./schemas"
-
-export function initialize(config: Config): Checkout {
-  // higher order variables that get assigned upon checkout
-  const closure = {
-    window: undefined,
-    basket: [],
-  }
-
-  window.addEventListener(
-    "message",
-    function (event) {
-      if (event.origin !== config.domain) return // DANGER ZONE
-      if (!["checkoutLoaded", "checkoutComplete"].includes(event.data.type))
-        return
-      if (event.data.type === "checkoutLoaded") {
-        const message = JSON.parse(
-          JSON.stringify({
-            type: "basketUpdate",
-            origin,
-            basket: closure.basket,
-            notify: config.notify,
-            integrator: config.integrator,
-            provider: config.provider,
-          }),
-        )
-        closure.window.postMessage(message, config.domain)
-      } else if (event.data.type === "checkoutComplete") {
-        config.callback(event.data)
-      }
-    },
-    false,
-  )
-  const { provider, domain } = config
-  return createCheckout({ provider, domain, closure })
-}
+import { type Config, type Checkout } from "../../src/schemas";
+export declare function initialize(config: Config): Checkout;

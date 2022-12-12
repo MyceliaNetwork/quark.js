@@ -155,8 +155,8 @@ const BasketItem = z
  * Basket
  *
  * The basket is an array of items that the end-user has selected to pay for.
- *
- *
+ * The name, description and price of each item is shown on the Quark website
+ * upon Checkout.
  */
 
 export const Basket = BasketItem.array()
@@ -167,20 +167,31 @@ export type Basket = z.infer<typeof Basket>
  * Checkout
  */
 
-const Window = z.object({
-  open: z.function(),
-})
-
 const Checkout = z.function().args(Basket).returns(z.boolean())
+export type Checkout = z.infer<typeof Checkout>
+
+/**
+ * Because the `basket` and `window` can only be assigned by the user's browser, we need to
+ * use a closure to create a Checkout function with all necessary values to send to the Quark window.
+ */
 
 const Closure = z.object({
-  window: Window,
-  basket: Basket,
+  window: z.any(),
+  basket: Basket.optional(),
 })
+export type Closure = {
+  window?: Window
+  basket?: Basket
+}
+
 /**
  * CreateCheckout
+ *
+ * Used to produce a Function that can be implemented by the integrator how they see fit.
+ * The user will most likely call this function when the user clicks a "Pay" button.
  */
-const CreateCheckoutArgs = z
+
+const CreateCheckoutConfig = z
   .object({
     provider: Provider,
     domain: Domain,
@@ -188,10 +199,7 @@ const CreateCheckoutArgs = z
   })
   .required()
   .strict()
-const CreateCheckout = z.function().args(CreateCheckoutArgs).returns(Checkout)
+export type CreateCheckoutConfig = z.infer<typeof CreateCheckoutConfig>
 
-// TODO: find out why this cannot be applied like: fn<CreateCheckout>(...)
+const CreateCheckout = z.function().args(CreateCheckoutConfig).returns(Checkout)
 export type CreateCheckout = z.infer<typeof CreateCheckout>
-
-export type CreateCheckoutArgs = z.infer<typeof CreateCheckoutArgs>
-export type Checkout = z.infer<typeof Checkout>

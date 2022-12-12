@@ -1,4 +1,4 @@
-import { Config, Basket } from "./schemas"
+import { Config, Basket } from "../../src/schemas"
 
 function config(c: Config) {
   const r = Config.parse(c)
