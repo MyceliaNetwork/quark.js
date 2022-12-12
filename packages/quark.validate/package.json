@@ -1,5 +1,5 @@
 {
-  "name": "@departurelabs/quark.checkout.validate",
+  "name": "@departurelabs/quark.validate",
   "version": "1.0.0",
   "description": "Runtime validation for Quark checkout data",
   "main": "index.js",

@@ -1,5 +1,5 @@
 {
-  "name": "@departurelabs/quark.checkout",
+  "name": "@departurelabs/quark",
   "version": "1.0.0",
   "description": "Quark Checkout script",
   "main": "index.js",

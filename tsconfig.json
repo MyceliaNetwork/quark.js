@@ -1,7 +1,15 @@
 {
-  "extends": "./tsconfig.base.json",
+  "include": ["./packages/*/**.ts", "./src/*.ts"],
+  "exclude": ["**/*.test.ts", "**/*.stub.ts", "node_modules", "dist"],
   "compilerOptions": {
-    "baseUrl": "./"
-  },
-  "include": ["./packages/*/**.ts", "./src/*.ts"]
+    "target": "ES2015",
+    "module": "esnext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "./dist"
+  }
 }
