@@ -58,7 +58,7 @@ export function initialize(config: Config): Checkout {
             provider: config.provider,
           }),
         )
-        closure?.window?.postMessage?.(message, config.domain)
+        closure.window?.postMessage(message, config.domain)
       } else if (event.data.type === "checkoutComplete") {
         config.callback(event.data)
       }

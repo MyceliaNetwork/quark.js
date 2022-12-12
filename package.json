@@ -5,14 +5,14 @@
   "private": false,
   "scripts": {
     "build": "rollup --config rollup.config.mjs",
-    "postbuild": "npm run build:types:mv:quark && npm run build:types:mv:validate && npm run build:types:rm:quark && npm run build:types:rm:validate",
+    "postbuild": "npm run build:types:quark:mv && npm run build:types:validate:mv && npm run build:types:quark:rm && npm run build:types:validate:rm",
     "test": "vitest",
     "test:watch": "vitest -w",
     "test:coverage": "vitest run --coverage",
-    "build:types:mv:quark": "mv dist/quark/types/src/schemas.d.ts dist/quark/types.d.ts",
-    "build:types:rm:quark": "rm -rf dist/quark/types",
-    "build:types:mv:validate": "mv dist/quark.validate/types/src/schemas.d.ts dist/quark.validate/types.d.ts",
-    "build:types:rm:validate": "rm -rf dist/quark.validate/types"
+    "build:types:quark:mv": "mv packages/quark/dist/types/src/schemas.d.ts packages/quark/dist/types.d.ts",
+    "build:types:quark:rm": "rm -rf packages/quark/dist/types",
+    "build:types:validate:mv": "mv packages/quark.validate/dist/types/src/schemas.d.ts packages/quark.validate/dist/types.d.ts",
+    "build:types:validate:rm": "rm -rf packages/quark.validate/dist/types"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "rollup": "3.7.3",
     "typescript": "4.9.4",
     "vite-plugin-eslint": "1.8.1",
-    "vitest": "0.7.7"
+    "vitest": "0.7.7",
+    "zod": "^3.20.0"
   }
 }

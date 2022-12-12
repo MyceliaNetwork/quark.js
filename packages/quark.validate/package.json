@@ -1,8 +1,10 @@
 {
   "name": "@departurelabs/quark.validate",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Runtime validation for Quark checkout data",
-  "main": "index.js",
+  "main": "./dist/quark.validate.esm.min.js",
+  "browser": "./dist/quark.validate.umd.min.js",
+  "module": "./dist/quark.validate.esm.min.js",
   "dependencies": {
     "zod": "3.19.1"
   },

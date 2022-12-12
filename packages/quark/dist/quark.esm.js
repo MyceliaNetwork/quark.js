@@ -61,7 +61,7 @@ function initialize(config) {
         basket: [],
     };
     window.addEventListener("message", function checkoutEventHandler(event) {
-        var _a, _b;
+        var _a;
         if (event.origin !== config.domain)
             return; // DANGER ZONE
         if (!["checkoutLoaded", "checkoutComplete"].includes(event.data.type))
@@ -75,7 +75,7 @@ function initialize(config) {
                 integrator: config.integrator,
                 provider: config.provider,
             }));
-            (_b = (_a = closure === null || closure === void 0 ? void 0 : closure.window) === null || _a === void 0 ? void 0 : _a.postMessage) === null || _b === void 0 ? void 0 : _b.call(_a, message, config.domain);
+            (_a = closure.window) === null || _a === void 0 ? void 0 : _a.postMessage(message, config.domain);
         }
         else if (event.data.type === "checkoutComplete") {
             config.callback(event.data);
