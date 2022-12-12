@@ -1,0 +1,26 @@
+{
+  "name": "@departurelabs/quark",
+  "version": "0.0.1",
+  "description": "Quark Checkout script",
+  "main": "./dist/quark.esm.min.js",
+  "browser": "./dist/quark.umd.min.js",
+  "module": "./dist/quark.esm.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DepartureLabsIC/quark.js.git"
+  },
+  "keywords": [
+    "quark",
+    "checkout",
+    "departurelabs"
+  ],
+  "author": "Departure Labs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DepartureLabsIC/quark.js/issues"
+  },
+  "homepage": "https://github.com/DepartureLabsIC/quark.js#readme"
+}

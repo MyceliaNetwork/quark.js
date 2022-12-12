@@ -1,0 +1,16 @@
+{
+  "include": ["./packages/*/**.ts", "./src/*.ts"],
+  "exclude": ["**/*.test.ts", "**/*.stub.ts", "node_modules", "dist"],
+  "compilerOptions": {
+    "target": "ES2016",
+    "module": "esnext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": ".",
+    "declaration": true,
+    "declarationDir": "./types",
+    "moduleResolution": "node"
+  }
+}

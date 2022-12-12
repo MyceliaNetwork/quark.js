@@ -39,7 +39,7 @@ Example integration:
 import initializeQuark from "@departurelabs/quark.js"
 
 const { checkout } = initializeQuark({
-  authProvider: "ii",
+  provider: "ii",
   domain: "https://pwwjo-6qaaa-aaaam-aadka-cai.ic0.app",
   notify: {
     principalId: "dlftw-sqaaa-aaaaa-danil-cai",
@@ -71,8 +71,8 @@ checkout(basket)
 
 ### Configuration properties
 
-`authProvider` - The provider used to authenticate the user. This value is used
-to redirect the user quickly to the correct authentication page when they are
+`provider` - The provider used to authenticate the user. This value is used to
+redirect the user quickly to the correct authentication page when they are
 checking out but not yet authenticated. See
 [Authentication providers](#authentication-providers) for a list of the
 providers we currently support.
@@ -187,7 +187,7 @@ recommend using libraries such as:
 ## Authentication providers
 
 Currently we support the following authentication providers by passing the
-following values to the `authProvider` property when calling `initializeQuark`:
+following values to the `provider` property when calling `initializeQuark`:
 
 | Provider                                       | Value  |
 | ---------------------------------------------- | ------ |
