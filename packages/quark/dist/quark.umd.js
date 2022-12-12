@@ -29,16 +29,22 @@
     }
 
     /**
-     * initialize - Initialize quark.js
+     * initialize - Initialize integrator script
      *
-     * When called the configuration passed as a parameter is first
-     * validated. When validated, we're attaching an eventListener
-     * to the window scope. The eventListener will execute a handler
-     * upon receiving an incoming message. When this message comes from
-     * the Quark website it will execute code to ensure communication
-     * between quark.js and the Quark website.
+     * When called we assume the config passed is valid. To ensure
+     * validity we provide the `quark.validate` script to validate
+     * the config and basket before passing them to the `initialize`
+     * and `checkout` functions. Upon calling `initialize` we are
+     * attaching an EventListener to the window scope. The EventListener
+     * will execute a handler `checkoutEventHandler` that will listen
+     * to incoming messages. The `initialize` function returns a
+     * `checkout` function. When called it opens Quark in a new window.
+     * Once the window opens it will send a message to the EventListener
+     * that is running in the scope of `initialize` and the handler.
+     * When it's called with a `event.data.type` of `checkoutLoaded`,
+     * the handler will transfer the basket data to the opened Quark window.
      *
-     * There are two types of incoming messages on the quark.js-side:
+     * There are two types of incoming messages on the integrator-side:
      * - `checkoutLoaded`: this message will be dispatched once the Quark
      * checkout page was opened in another tab. Upon receiving this
      * message we will send all the necessary data to the opened tab,
@@ -51,7 +57,7 @@
      * the integrator to take it from there.
      *
      * Also, there is one type of outgoing message going from the
-     * quark.js-side to the Quark-side:
+     * integrator-side to the Quark-side:
      * - `basketUpdate`: When opened in the end-user's browser, the
      * Checkout page on the Quark website will listen for this
      * particular message to update the contents of the checkout

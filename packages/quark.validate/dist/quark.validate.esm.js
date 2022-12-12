@@ -3620,6 +3620,13 @@ const Token = mod.union([TEST, ICP], {
     invalid_type_error: "Invalid Basket.token Type. Expected String",
     required_error: "Basket.token is required",
 });
+/**
+ * Basket
+ *
+ * The basket is an array of items that the end-user has selected to pay for.
+ * The name, description and price of each item is shown on the Quark website
+ * upon Checkout.
+ */
 const BasketItem = mod
     .object({
     name: Name,
@@ -3628,13 +3635,6 @@ const BasketItem = mod
     token: Token,
 })
     .required();
-/**
- * Basket
- *
- * The basket is an array of items that the end-user has selected to pay for.
- * The name, description and price of each item is shown on the Quark website
- * upon Checkout.
- */
 const Basket = BasketItem.array();
 /**
  * Checkout
@@ -3664,6 +3664,11 @@ const CreateCheckoutConfig = mod
     .strict();
 mod.function().args(CreateCheckoutConfig).returns(Checkout);
 
+/**
+ * validate - Validate quark config and basket
+ *
+ *
+ */
 function config(c) {
     const r = Config.parse(c);
     console.log("🚀 ~ file: validate.ts:5 ~ config ~ r", r);

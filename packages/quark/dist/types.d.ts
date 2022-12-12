@@ -39,13 +39,6 @@ export declare const Config: z.ZodObject<{
     };
 }>;
 export type Config = z.infer<typeof Config>;
-/**
- * Basket
- *
- * The basket is an array of items that the end-user has selected to pay for.
- * The name, description and price of each item is shown on the Quark website
- * upon Checkout.
- */
 export declare const Basket: z.ZodArray<z.ZodObject<{
     name: z.ZodString;
     description: z.ZodString;

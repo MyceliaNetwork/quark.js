@@ -6,14 +6,12 @@
   "private": false,
   "scripts": {
     "build": "rollup --config rollup.config.mjs",
-    "postbuild": "npm run build:types:quark:mv && npm run build:types:validate:mv && npm run build:types:quark:rm && npm run build:types:validate:rm",
+    "postbuild": "npm run build:types:quark:cp && npm run build:types:validate:cp",
     "test": "vitest",
     "test:watch": "vitest -w",
     "test:coverage": "vitest run --coverage",
-    "build:types:quark:mv": "mv packages/quark/dist/types/src/schemas.d.ts packages/quark/dist/types.d.ts",
-    "build:types:quark:rm": "rm -rf packages/quark/dist/types",
-    "build:types:validate:mv": "mv packages/quark.validate/dist/types/src/schemas.d.ts packages/quark.validate/dist/types.d.ts",
-    "build:types:validate:rm": "rm -rf packages/quark.validate/dist/types"
+    "build:types:quark:cp": "cp packages/quark/dist/types/src/schemas.d.ts packages/quark/dist/types.d.ts",
+    "build:types:validate:cp": "cp packages/quark.validate/dist/types/src/schemas.d.ts packages/quark.validate/dist/types.d.ts"
   },
   "repository": {
     "type": "git",

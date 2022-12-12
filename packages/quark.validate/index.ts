@@ -1,3 +1,12 @@
+/**
+ * validate - Validate quark config and basket
+ *
+ * Please delete package when validated.
+ *
+ * This package helps you use correctly setup your quark integration.
+ * By calling this function you can validate your Quark config and
+ * basket data during run-time.
+ */
 import { Config, Basket } from "../../src/schemas"
 
 function config(c: Config) {
