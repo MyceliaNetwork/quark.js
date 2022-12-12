@@ -1,6 +1,8 @@
-# quark.js
+# DEPRECATED
 
-Quark integration script.
+## This project has been deprecated in favor of `@departurelabs/quark` & `@departurelabs/quark.validate`
+
+quark.js - Quark integration script.
 
 Integrate this script in your IC application to support payments on Dfinity's
 Internet Computer.
