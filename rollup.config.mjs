@@ -10,14 +10,14 @@ export default [
     output: [
       {
         name: "quark",
-        file: "./dist/packages/quark/quark.umd.js",
+        file: "./dist/quark/quark.umd.js",
         format: "umd",
         exports: "named",
         sourcemap: true,
       },
       {
         name: "quark",
-        file: "./dist/packages/quark/quark.esm.js",
+        file: "./dist/quark/quark.esm.js",
         format: "esm",
         exports: "named",
         sourcemap: true,
@@ -33,14 +33,14 @@ export default [
     output: [
       {
         name: "quark.validate",
-        file: "./dist/packages/quark.validate/quark.validate.umd.js",
+        file: "./dist/quark.validate/quark.validate.umd.js",
         format: "umd",
         exports: "named",
         sourcemap: true,
       },
       {
         name: "quark.validate",
-        file: "./dist/packages/quark.validate/quark.validate.esm.js",
+        file: "./dist/quark.validate/quark.validate.esm.js",
         format: "esm",
         exports: "named",
         sourcemap: true,

@@ -16,9 +16,11 @@ import {
 function createCheckout(config: CreateCheckoutConfig): Checkout {
   const { closure, domain, provider } = config
   return function checkout(b: Basket): boolean {
-    // By assiging the user's Basket value to the closure
-    // `checkoutEventHandler` will be able to access it and
-    // send it to the Quark website.
+    // By assiging the user's Basket value to the closure, the
+    // `checkoutEventHandler` will be able to access its value
+    // once it is receiving the `checkoutLoaded` EventMessage
+    // sent by Quark, so that it can update the Quark Checkout
+    // page with the basket content.
     closure.basket = b
     const origin = window.origin
     const queryString = JSON.stringify({ origin, provider })
