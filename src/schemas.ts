@@ -142,15 +142,6 @@ const Token = z.union([TEST, ICP], {
   required_error: "Basket.token is required",
 })
 
-const BasketItem = z
-  .object({
-    name: Name,
-    description: Description.optional(),
-    value: Value,
-    token: Token,
-  })
-  .required()
-
 /**
  * Basket
  *
@@ -159,8 +150,15 @@ const BasketItem = z
  * upon Checkout.
  */
 
+const BasketItem = z
+  .object({
+    name: Name,
+    description: Description.optional(),
+    value: Value,
+    token: Token,
+  })
+  .required()
 export const Basket = BasketItem.array()
-
 export type Basket = z.infer<typeof Basket>
 
 /**

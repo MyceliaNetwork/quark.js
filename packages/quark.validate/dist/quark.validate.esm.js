@@ -1081,7 +1081,7 @@ class ZodString extends ZodType {
             ...errorUtil.errToObj(message),
         });
     }
-    isDatetime() {
+    get isDatetime() {
         return !!this._def.checks.find((ch) => ch.kind === "datetime");
     }
     get isEmail() {
@@ -3166,18 +3166,16 @@ class ZodCatch extends ZodType {
         });
         if (isAsync(result)) {
             return result.then((result) => {
-                const defaultValue = this._def.defaultValue();
                 return {
                     status: "valid",
-                    value: result.status === "valid" ? result.value : defaultValue,
+                    value: result.status === "valid" ? result.value : this._def.defaultValue(),
                 };
             });
         }
         else {
-            const defaultValue = this._def.defaultValue();
             return {
                 status: "valid",
-                value: result.status === "valid" ? result.value : defaultValue,
+                value: result.status === "valid" ? result.value : this._def.defaultValue(),
             };
         }
     }
