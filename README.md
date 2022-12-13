@@ -18,12 +18,14 @@ any amount of traffic.
   - [Token support](#token-support)
   - [Authentication providers](#authentication-providers)
   - [Publishing](#publishing)
+  - [Motoko Quark](#motoko-quark)
+    - [DEPRECATED](#deprecated)
 
 ## Websites
 
 - T.B.A. Quark website
-- [GitHub quark](https://github.com/DepartureLabsIC/quark.js)
-- [GitHub rs_quark](https://github.com/DepartureLabsIC/rs_quark)
+- [GitHub Quark source](https://github.com/DepartureLabsIC/rs_quark)
+- [GitHub Quark npm package source](https://github.com/DepartureLabsIC/quark_checkout)
 
 ## Packages
 
@@ -216,3 +218,16 @@ following values to the `provider` property when calling `initialize`:
 > npm version <patch/minor/major>
 > npm publish
 ```
+
+## Motoko Quark
+
+Please be warned. This is:
+
+### DEPRECATED
+
+This package `@departurelabs/quark` supports `rs_quark` which is written in
+Rust. However, an earlier version of Quark was written in Motoko. These are the
+links for the _DEPRECATED_ Motoko version of Quark:
+
+- [GitHub Motoko Quark](https://github.com/DepartureLabsIC/quark)
+- [GitHub Motoko Quark](https://github.com/DepartureLabsIC/quark.js)

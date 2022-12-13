@@ -2,9 +2,9 @@
   "name": "@departurelabs/quark-checkout.validate",
   "version": "0.0.1",
   "description": "Runtime validation for Quark checkout data",
-  "main": "./dist/quark.validate.esm.js",
-  "browser": "./dist/quark.validate.umd.js",
-  "module": "./dist/quark.validate.esm.js",
+  "main": "./dist/quark-checkout.validate.esm.js",
+  "browser": "./dist/quark-checkout.validate.umd.js",
+  "module": "./dist/quark-checkout.validate.esm.js",
   "dependencies": {
     "@dfinity/principal": "^0.15.0",
     "zod": "3.19.1"

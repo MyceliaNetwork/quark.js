@@ -2,9 +2,9 @@
   "name": "@departurelabs/quark-checkout",
   "version": "0.0.1",
   "description": "Quark Checkout script",
-  "main": "./dist/quark.esm.js",
-  "browser": "./dist/quark.umd.js",
-  "module": "./dist/quark.esm.js",
+  "main": "./dist/quark-checkout.esm.js",
+  "browser": "./dist/quark-checkout.umd.js",
+  "module": "./dist/quark-checkout.esm.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
