@@ -2,7 +2,7 @@ import { z } from "zod"
 import { Principal as P } from "@dfinity/principal"
 
 // TODO: use Principal type
-const validatePrincipal = (p: any) => {
+const validatePrincipal = (p: string) => {
   try {
     return p === P.fromText(p).toText()
   } catch (e) {

@@ -173,7 +173,7 @@ z.function().args(CreateCheckoutConfig).returns(Checkout);
  *
  * This package helps you use correctly setup your quark integration.
  * By calling this function you can validate your Quark config and
- * basket data during run-time.
+ * basket data during runtime.
  */
 function config(c) {
     const r = Config.parse(c);
@@ -188,4 +188,4 @@ function basket(b) {
 const validate = { config, basket };
 
 export { validate };
-//# sourceMappingURL=quark.validate.esm.js.map
+//# sourceMappingURL=quark-checkout.validate.esm.js.map

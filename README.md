@@ -1,12 +1,15 @@
-# quark.js
+# @departurelabs/quark-checkout
 
-Quark integration script.
+An npm package to integrate Quark in in your IC application to support payments
+on Dfinity's Internet Computer.
 
-Integrate this script in your IC application to support payments on Dfinity's
-Internet Computer.
+Quark makes it incredibly simple to collect payments in your IC applications.
+The multi-canister architecture of Quark makes the product scalable to handle
+any amount of traffic.
 
-- [quark.js](#quarkjs)
+- [@departurelabs/quark-checkout](#departurelabsquark-checkout)
   - [Websites](#websites)
+  - [Packages](#packages)
   - [Installation](#installation)
   - [Usage](#usage)
     - [Configuration properties](#configuration-properties)
@@ -18,15 +21,21 @@ Internet Computer.
 
 ## Websites
 
-- [Quark](https://pwwjo-6qaaa-aaaam-aadka-cai.ic0.app/)
-- [npm](https://www.npmjs.com/package/@departurelabs/quark.js)
-- [GitHub quark.js](https://github.com/DepartureLabsIC/quark.js)
+- T.B.A. Quark website
+- [GitHub quark](https://github.com/DepartureLabsIC/quark.js)
 - [GitHub rs_quark](https://github.com/DepartureLabsIC/rs_quark)
+
+## Packages
+
+- [@departurelabs/quark-checkout](https://www.npmjs.com/package/@departurelabs/quark-checkout):
+  Quark Integration script
+- [@departurelabs/quark-checkout.validate](https://www.npmjs.com/package/@departurelabs/quark-checkout.validate):
+  Helper functions to validate your Quark configuration and basket in runtime.
 
 ## Installation
 
 ```sh
-npm i -S @departurelabs/quark.js
+npm i -S @departurelabs/quark-checkout @departurelabs/quark-checkout.validate
 ```
 
 ## Usage
@@ -34,26 +43,30 @@ npm i -S @departurelabs/quark.js
 Example integration:
 
 ```js
-import initializeQuark from "@departurelabs/quark.js"
+import { initialize } from "@departurelabs/quark-checkout"
+// NOTE: quark.validate can be removed when you have a valid configuration
+import { validate } from "@departurelabs/quark-checkout.validate"
 
-const { checkout } = initializeQuark({
-  provider: "ii",
-  domain: "https://pwwjo-6qaaa-aaaam-aadka-cai.ic0.app",
-  notify: {
-    principalId: "dlftw-sqaaa-aaaaa-danil-cai",
-    methodName: "callback",
-  },
-  integrator: "company@testnet.quark",
-  callback: event => {
-    if (event.type === "checkoutComplete") {
-      if (event.data.result === "Accepted") {
-        checkoutComplete()
-      } else {
-        checkoutFailed()
+const { checkout } = initialize(
+  validate.config({
+    provider: "ii",
+    domain: "https://pwwjo-6qaaa-aaaam-aadka-cai.ic0.app",
+    notify: {
+      principalId: "dlftw-sqaaa-aaaaa-danil-cai",
+      methodName: "callback",
+    },
+    integrator: "company@testnet.quark",
+    callback: event => {
+      if (event.type === "checkoutComplete") {
+        if (event.data.result === "Accepted") {
+          checkoutComplete()
+        } else {
+          checkoutFailed()
+        }
       }
-    }
-  },
-})
+    },
+  }),
+)
 
 const basket = [
   {
@@ -64,7 +77,7 @@ const basket = [
   },
 ]
 
-checkout(basket)
+checkout(validate.basket(basket))
 ```
 
 ### Configuration properties
@@ -75,8 +88,9 @@ checking out but not yet authenticated. See
 [Authentication providers](#authentication-providers) for a list of the
 providers we currently support.
 
-`domain` - The domain quark.js will send a user to upon checkout. In the future,
-we expect larger services might want to self-host their own checkout pages.
+`domain` - The domain quark-checkout will send a user to upon checkout. In the
+future, we expect larger services might want to self-host their own checkout
+pages.
 
 `notify` - An object containing the Principal ID as a string and the name of the
 canister method as a string.
@@ -95,7 +109,7 @@ to withdraw funds. Please use only use a canister, a dfx principal identity, or
 a Quark user principal unless you are absolutely sure about what you are doing.
 
 `callback` - A javascript method implemented by the integrator to be invoked by
-quark.js upon a checkout Event.
+quark-checkout upon a checkout Event.
 
 Example events:
 
@@ -129,13 +143,13 @@ basket with a couple of transaction items.
 
 ## Cross-tab communication
 
-When calling `initializeQuark`, the configuration passed as a parameter is first
+When calling `initialize`, the configuration passed as a parameter is first
 validated. When validated, we will attach an eventListener to the window scope.
 The eventListener will execute a handler upon receiving an incoming message.
 When this message comes from the Quark website it will execute code to ensure
-communication between quark.js and the Quark website.
+communication between quark-checkout and the Quark website.
 
-There are two types of incoming messages on the quark.js-side:
+There are two types of incoming messages on the quark-checkout-side:
 
 - `checkoutLoaded`: this message will be dispatched once the Quark checkout page
   was opened in another tab. Upon receiving this message we will send all the
@@ -148,8 +162,8 @@ There are two types of incoming messages on the quark.js-side:
   will call the `callback` Function that the user passed inside the init()
   config and it's up to the integrator to take it from there.
 
-Also, there is one type of outgoing message going from the quark.js-side to the
-Quark-side:
+Also, there is one type of outgoing message going from the quark-checkout-side
+to the Quark-side:
 
 - `basketUpdate`: When opened in the end-user's browser, the Checkout page on
   the Quark website will listen for this particular message to update the
@@ -185,7 +199,7 @@ recommend using libraries such as:
 ## Authentication providers
 
 Currently we support the following authentication providers by passing the
-following values to the `provider` property when calling `initializeQuark`:
+following values to the `provider` property when calling `initialize`:
 
 | Provider                                       | Value  |
 | ---------------------------------------------- | ------ |

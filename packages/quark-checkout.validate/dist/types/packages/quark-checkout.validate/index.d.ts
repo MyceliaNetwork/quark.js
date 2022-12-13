@@ -5,7 +5,7 @@
  *
  * This package helps you use correctly setup your quark integration.
  * By calling this function you can validate your Quark config and
- * basket data during run-time.
+ * basket data during runtime.
  */
 import { Config, Basket } from "../../src/schemas";
 declare function config(c: Config): {

@@ -1,13 +1,13 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
     typeof define === 'function' && define.amd ? define(['exports'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.quark = {}));
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["quark-checkout"] = {}));
 })(this, (function (exports) { 'use strict';
 
     /**
      * checkout - Open Quark website to confirm checkout
      *
-     * After quark.js is properly configured, the integrator
+     * After quark-checkout is properly configured, the integrator
      * can call the `checkout` Function returned by this
      * higher order Function to open a new browser window to
      * the Quark website to let the user confirm the transfer.
@@ -100,4 +100,4 @@
     exports.initialize = initialize;
 
 }));
-//# sourceMappingURL=quark.umd.js.map
+//# sourceMappingURL=quark-checkout.umd.js.map

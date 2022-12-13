@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('zod'), require('@dfinity/principal')) :
     typeof define === 'function' && define.amd ? define(['exports', 'zod', '@dfinity/principal'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.quark = global.quark || {}, global.quark.validate = {}), global.zod));
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global["quark-checkout"] = global["quark-checkout"] || {}, global["quark-checkout"].validate = {}), global.zod));
 })(this, (function (exports, zod) { 'use strict';
 
     const DESCRIPTION = {
@@ -176,7 +176,7 @@
      *
      * This package helps you use correctly setup your quark integration.
      * By calling this function you can validate your Quark config and
-     * basket data during run-time.
+     * basket data during runtime.
      */
     function config(c) {
         const r = Config.parse(c);
@@ -193,4 +193,4 @@
     exports.validate = validate;
 
 }));
-//# sourceMappingURL=quark.validate.umd.js.map
+//# sourceMappingURL=quark-checkout.validate.umd.js.map

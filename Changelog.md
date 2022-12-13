@@ -7,5 +7,5 @@
   - Split up initialization and checkout into multiple files
   - Changed package publishing. We split up the package into two separate ones,
     dropped the .js suffix from the package name and published them unminified.
-    - `@departurelabs/quark`
-    - `@departurelabs/quark.validate`
+    - `@departurelabs/quark-checkout`
+    - `@departurelabs/quark-checkout.validate`

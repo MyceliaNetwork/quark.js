@@ -1,5 +1,5 @@
 {
-  "name": "@departurelabs/quark.validate",
+  "name": "@departurelabs/quark-checkout.validate",
   "version": "0.0.1",
   "description": "Runtime validation for Quark checkout data",
   "main": "./dist/quark.validate.esm.js",
@@ -12,13 +12,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DepartureLabsIC/quark.js.git"
+    "url": "git+https://github.com/DepartureLabsIC/quark-checkout.git"
   },
   "author": "Departure Labs",
   "bugs": {
-    "url": "https://github.com/DepartureLabsIC/quark.js/issues"
+    "url": "https://github.com/DepartureLabsIC/quark-checkout/issues"
   },
-  "homepage": "https://github.com/DepartureLabsIC/quark.js#readme"
+  "homepage": "https://github.com/DepartureLabsIC/quark-checkout#readme"
 }

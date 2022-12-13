@@ -1,13 +1,13 @@
 import { describe, it, expect } from "vitest"
-import { init } from "../index.js"
+import { initialize } from "../packages/quark/index"
 
 const ALLOWED_AUTH_PROVIDERS = ["ii"]
 const ALLOWED_VALUE_TYPES = ["ICP"]
 
-describe("quark.js", async () => {
+describe("@quark-checkout", async () => {
   describe("init", () => {
     const validConfig = {
-      authProvider: "ii",
+      provider: "ii",
       domain: "http://localhost:3000",
       notify: {
         principalId: "jsl3u-sqaaa-aaaaa-danil-cai",
@@ -27,7 +27,7 @@ describe("quark.js", async () => {
 
     // FIXME: blocked by:
     // https://github.com/jsdom/jsdom/issues/2745
-    it.skip("adds an eventListener", async () => {
+    it("adds an eventListener", async () => {
       init(validConfig)
       window.location = "http://localhost:3000"
       window.postMessage(
@@ -46,44 +46,44 @@ describe("quark.js", async () => {
 
     it("throws when required fields are not correctly configured", async () => {
       const notify = { methodName: "callback", principalId: "aaaa-aa" }
-      const authProvider = "f00"
+      const provider = "f00"
       const integrator = "b4r"
       const domain = "b4z"
-      const primitives = { integrator, authProvider, domain }
+      const primitives = { integrator, provider, domain }
 
       const expectedErrors = [
         {
-          config: { notify, authProvider, domain },
+          config: { notify, provider, domain },
           error: "The field `integrator` is required",
         },
         {
-          config: { notify, integrator, authProvider },
+          config: { notify, integrator, provider },
           error: "The field `domain` is required",
         },
         {
           config: { notify, integrator, domain },
-          error: "The field `authProvider` is required",
+          error: "The field `provider` is required",
         },
         {
-          config: { integrator, authProvider, domain },
+          config: { integrator, provider, domain },
           error: "The field `notify` is required",
         },
 
         {
-          config: { notify, integrator: 1337, authProvider, domain },
+          config: { notify, integrator: 1337, provider, domain },
           error: "The field `integrator` must be of type 'string'",
         },
         {
-          config: { notify, integrator, authProvider: 1337, domain },
-          error: "The field `authProvider` must be of type 'string'",
+          config: { notify, integrator, provider: 1337, domain },
+          error: "The field `provider` must be of type 'string'",
         },
         {
-          config: { notify, integrator, authProvider, domain: 1337 },
+          config: { notify, integrator, provider, domain: 1337 },
           error: "The field `domain` must be of type 'string'",
         },
 
         {
-          config: { notify: "f00", integrator, authProvider, domain },
+          config: { notify: "f00", integrator, provider, domain },
           error: "The field `notify` must be of type 'object'",
         },
         {
@@ -111,9 +111,9 @@ describe("quark.js", async () => {
           error: "The field `notify.methodName` must be of type 'string'",
         },
         {
-          config: { notify, integrator, domain, authProvider },
+          config: { notify, integrator, domain, provider },
           error:
-            "The field `authProvider` must be one of: " +
+            "The field `provider` must be one of: " +
             ALLOWED_AUTH_PROVIDERS.join(", "),
         },
       ]

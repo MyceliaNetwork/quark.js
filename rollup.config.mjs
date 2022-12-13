@@ -1,57 +1,33 @@
 import resolve from "@rollup/plugin-node-resolve"
-import commonjs from "@rollup/plugin-commonjs"
 import typescript from "@rollup/plugin-typescript"
+import commonjs from "@rollup/plugin-commonjs"
+
+function createConfig(name) {
+  return {
+    input: `./packages/${name}/index.ts`,
+    plugins: [resolve({ browser: true }), typescript(), commonjs()],
+    // indicate which modules should be treated as external
+    external: ["zod", "@dfinity/principal"],
+    output: [
+      {
+        name,
+        file: `./packages/${name}/dist/${name}.umd.js`,
+        format: `umd`,
+        exports: `named`,
+        sourcemap: true,
+      },
+      {
+        name,
+        file: `./packages/${name}/dist/${name}.esm.js`,
+        format: `esm`,
+        exports: `named`,
+        sourcemap: true,
+      },
+    ],
+  }
+}
 
 export default [
-  {
-    input: "./packages/quark/index.ts",
-    plugins: [resolve(), typescript(), commonjs()],
-    // indicate which modules should be treated as external
-    external: ["node_modules"],
-    output: [
-      {
-        name: "quark",
-        file: "./packages/quark/dist/quark.umd.js",
-        format: "umd",
-        exports: "named",
-        sourcemap: true,
-      },
-      {
-        name: "quark",
-        file: "./packages/quark/dist/quark.esm.js",
-        format: "esm",
-        exports: "named",
-        sourcemap: true,
-      },
-    ],
-  },
-
-  {
-    input: "./packages/quark.validate/index.ts",
-    plugins: [
-      resolve({
-        browser: true,
-      }),
-      typescript(),
-      commonjs(),
-    ],
-    // indicate which modules should be treated as external
-    external: ["@dfinity/principal", "zod"],
-    output: [
-      {
-        name: "quark.validate",
-        file: "./packages/quark.validate/dist/quark.validate.umd.js",
-        format: "umd",
-        exports: "named",
-        sourcemap: true,
-      },
-      {
-        name: "quark.validate",
-        file: "./packages/quark.validate/dist/quark.validate.esm.js",
-        format: "esm",
-        exports: "named",
-        sourcemap: true,
-      },
-    ],
-  },
+  createConfig("quark-checkout", false),
+  createConfig("quark-checkout.validate", false),
 ]
