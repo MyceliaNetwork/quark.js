@@ -5,7 +5,7 @@ import { z } from "zod";
  * A config to initialize Quark on the integrator's website.
  */
 export declare const Config: z.ZodObject<{
-    provider: z.ZodUnion<[z.ZodLiteral<"II">, z.ZodLiteral<"NFID">, z.ZodLiteral<"PLUG">]>;
+    provider: z.ZodUnion<[z.ZodLiteral<"ii">, z.ZodLiteral<"nfid">, z.ZodLiteral<"plug">]>;
     integrator: z.ZodString;
     domain: z.ZodString;
     callback: z.ZodFunction<z.ZodTuple<[z.ZodAny], z.ZodUnknown>, z.ZodAny>;
@@ -20,7 +20,7 @@ export declare const Config: z.ZodObject<{
         methodName: string;
     }>;
 }, "strict", z.ZodTypeAny, {
-    provider: "II" | "NFID" | "PLUG";
+    provider: "ii" | "nfid" | "plug";
     integrator: string;
     domain: string;
     callback: (args_0: any, ...args_1: unknown[]) => any;
@@ -29,7 +29,7 @@ export declare const Config: z.ZodObject<{
         methodName: string;
     };
 }, {
-    provider: "II" | "NFID" | "PLUG";
+    provider: "ii" | "nfid" | "plug";
     integrator: string;
     domain: string;
     callback: (args_0: any, ...args_1: unknown[]) => any;
@@ -87,7 +87,7 @@ export type Closure = {
  * The user will most likely call this function when the user clicks a "Pay" button.
  */
 declare const CreateCheckoutConfig: z.ZodObject<{
-    provider: z.ZodUnion<[z.ZodLiteral<"II">, z.ZodLiteral<"NFID">, z.ZodLiteral<"PLUG">]>;
+    provider: z.ZodUnion<[z.ZodLiteral<"ii">, z.ZodLiteral<"nfid">, z.ZodLiteral<"plug">]>;
     domain: z.ZodString;
     closure: z.ZodObject<{
         window: z.ZodAny;
@@ -125,7 +125,7 @@ declare const CreateCheckoutConfig: z.ZodObject<{
         }[] | undefined;
     }>;
 }, "strict", z.ZodTypeAny, {
-    provider: "II" | "NFID" | "PLUG";
+    provider: "ii" | "nfid" | "plug";
     domain: string;
     closure: {
         window?: any;
@@ -137,7 +137,7 @@ declare const CreateCheckoutConfig: z.ZodObject<{
         }[] | undefined;
     };
 }, {
-    provider: "II" | "NFID" | "PLUG";
+    provider: "ii" | "nfid" | "plug";
     domain: string;
     closure: {
         window?: any;
@@ -151,7 +151,7 @@ declare const CreateCheckoutConfig: z.ZodObject<{
 }>;
 export type CreateCheckoutConfig = z.infer<typeof CreateCheckoutConfig>;
 declare const CreateCheckout: z.ZodFunction<z.ZodTuple<[z.ZodObject<{
-    provider: z.ZodUnion<[z.ZodLiteral<"II">, z.ZodLiteral<"NFID">, z.ZodLiteral<"PLUG">]>;
+    provider: z.ZodUnion<[z.ZodLiteral<"ii">, z.ZodLiteral<"nfid">, z.ZodLiteral<"plug">]>;
     domain: z.ZodString;
     closure: z.ZodObject<{
         window: z.ZodAny;
@@ -189,7 +189,7 @@ declare const CreateCheckout: z.ZodFunction<z.ZodTuple<[z.ZodObject<{
         }[] | undefined;
     }>;
 }, "strict", z.ZodTypeAny, {
-    provider: "II" | "NFID" | "PLUG";
+    provider: "ii" | "nfid" | "plug";
     domain: string;
     closure: {
         window?: any;
@@ -201,7 +201,7 @@ declare const CreateCheckout: z.ZodFunction<z.ZodTuple<[z.ZodObject<{
         }[] | undefined;
     };
 }, {
-    provider: "II" | "NFID" | "PLUG";
+    provider: "ii" | "nfid" | "plug";
     domain: string;
     closure: {
         window?: any;

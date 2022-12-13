@@ -1,11 +1,15 @@
 /**
  * validate - Validate quark config and basket
  *
+ * Please delete package when validated.
  *
+ * This package helps you use correctly setup your quark integration.
+ * By calling this function you can validate your Quark config and
+ * basket data during run-time.
  */
 import { Config, Basket } from "../../src/schemas";
 declare function config(c: Config): {
-    provider: "II" | "NFID" | "PLUG";
+    provider: "ii" | "nfid" | "plug";
     integrator: string;
     domain: string;
     callback: (args_0: any, ...args_1: unknown[]) => any;

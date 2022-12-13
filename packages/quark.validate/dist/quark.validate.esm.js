@@ -3511,9 +3511,9 @@ const DESCRIPTION = {
         DESCRIPTION: "Optional description of the basket item.",
     },
 };
-const II = mod.literal("II", { description: "Internet Identity" });
-const NFID = mod.literal("NFID", { description: "Non-Fungible Identity" });
-const PLUG = mod.literal("PLUG", { description: "Plug wallet" });
+const II = mod.literal("ii", { description: "Internet Identity" });
+const NFID = mod.literal("nfid", { description: "Non-Fungible Identity" });
+const PLUG = mod.literal("plug", { description: "Plug wallet" });
 const PROVIDERS = [II, NFID, PLUG];
 const printProviders = () => PROVIDERS.map(p => p.value).join(", ");
 const Provider = mod.union([II, NFID, PLUG], {
@@ -3667,7 +3667,11 @@ mod.function().args(CreateCheckoutConfig).returns(Checkout);
 /**
  * validate - Validate quark config and basket
  *
+ * Please delete package when validated.
  *
+ * This package helps you use correctly setup your quark integration.
+ * By calling this function you can validate your Quark config and
+ * basket data during run-time.
  */
 function config(c) {
     const r = Config.parse(c);

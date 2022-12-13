@@ -17,9 +17,9 @@ const DESCRIPTION = {
   },
 }
 
-const II = z.literal("II", { description: "Internet Identity" })
-const NFID = z.literal("NFID", { description: "Non-Fungible Identity" })
-const PLUG = z.literal("PLUG", { description: "Plug wallet" })
+const II = z.literal("ii", { description: "Internet Identity" })
+const NFID = z.literal("nfid", { description: "Non-Fungible Identity" })
+const PLUG = z.literal("plug", { description: "Plug wallet" })
 const PROVIDERS = [II, NFID, PLUG]
 
 const printProviders = () => PROVIDERS.map(p => p.value).join(", ")
