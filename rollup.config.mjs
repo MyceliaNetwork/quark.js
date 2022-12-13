@@ -1,10 +1,11 @@
 import resolve from "@rollup/plugin-node-resolve"
+import commonjs from "@rollup/plugin-commonjs"
 import typescript from "@rollup/plugin-typescript"
 
 export default [
   {
     input: "./packages/quark/index.ts",
-    plugins: [resolve(), typescript()],
+    plugins: [resolve(), typescript(), commonjs()],
     // indicate which modules should be treated as external
     external: [],
     output: [
@@ -27,7 +28,7 @@ export default [
 
   {
     input: "./packages/quark.validate/index.ts",
-    plugins: [typescript(), resolve()],
+    plugins: [resolve(), typescript(), commonjs()],
     // indicate which modules should be treated as external
     external: [],
     output: [

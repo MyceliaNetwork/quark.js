@@ -6,6 +6,7 @@
   "browser": "./dist/quark.validate.umd.js",
   "module": "./dist/quark.validate.esm.js",
   "dependencies": {
+    "@dfinity/principal": "^0.15.0",
     "zod": "3.19.1"
   },
   "scripts": {
