@@ -7,7 +7,7 @@ export default [
     input: "./packages/quark/index.ts",
     plugins: [resolve(), typescript(), commonjs()],
     // indicate which modules should be treated as external
-    external: [],
+    external: ["node_modules"],
     output: [
       {
         name: "quark",
@@ -28,9 +28,15 @@ export default [
 
   {
     input: "./packages/quark.validate/index.ts",
-    plugins: [resolve(), typescript(), commonjs()],
+    plugins: [
+      resolve({
+        browser: true,
+      }),
+      typescript(),
+      commonjs(),
+    ],
     // indicate which modules should be treated as external
-    external: [],
+    external: ["@dfinity/principal", "zod"],
     output: [
       {
         name: "quark.validate",
